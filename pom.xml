@@ -35,10 +35,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
 		<!--添加适用于生产环境的功能，如性能指标和监测等功能。 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -48,6 +44,14 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-rest</artifactId>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-freemarker -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-freemarker</artifactId>
+			<version>1.5.6.RELEASE</version>
+		</dependency>
+
+
 		<!--Mysql / DataSource-->
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>

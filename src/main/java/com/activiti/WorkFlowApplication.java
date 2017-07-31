@@ -23,6 +23,10 @@ public class WorkFlowApplication {
     private static Logger logger = Logger.getLogger(WorkFlowApplication.class);
 
 
+    /**
+     * c3p0作为数据源
+     * @return
+     */
     @Bean(name = "dataSource")
     @Qualifier(value = "dataSource")
     @Primary
@@ -40,7 +44,7 @@ public class WorkFlowApplication {
 
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 
-        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:/mybatis/*.xml"));
+        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:/mybatis/**/*.xml"));
 
         return sqlSessionFactoryBean.getObject();
     }

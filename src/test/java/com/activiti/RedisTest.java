@@ -1,6 +1,8 @@
 package com.activiti;
 
 import com.activiti.pojo.User;
+import com.activiti.service.UserService;
+import com.alibaba.fastjson.JSONObject;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,6 +26,8 @@ public class RedisTest {
 
     @Autowired
     private RedisTemplate redisTemplate;
+    @Autowired
+    private UserService userService;
 
     /**
      * 简单键值对存储测试
@@ -54,5 +58,12 @@ public class RedisTest {
             System.out.println("exists is false");
         }
          Assert.assertEquals("aa", operations.get("user_expire").getName());
+    }
+
+    @Test
+    public void ORMCacheTest(){
+        for (int i=0;i<1000;i++){
+            System.out.println(JSONObject.toJSONString(userService.getUserInfo()));
+        }
     }
 }

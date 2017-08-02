@@ -22,9 +22,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private MailServiceImpl mailService;
-
     /*
      *  http://localhost:8080/getUserInfo
      */
@@ -38,7 +35,6 @@ public class UserController {
             System.out.println("user.getName():" + user.getName());
             logger.info("user.getAge():" + user.getAge());
         }
-        mailService.sendSimpleMail("1249055292@qq.com", "TestMail", JSONObject.toJSONString(userList));
         return user;
     }
 }

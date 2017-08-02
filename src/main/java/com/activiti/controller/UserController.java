@@ -5,6 +5,7 @@ import com.activiti.pojo.User;
 import com.activiti.service.UserService;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.log4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,7 @@ import java.util.List;
  */
 @Controller
 public class UserController {
-    private Logger logger = Logger.getLogger(UserController.class);
+    private final org.slf4j.Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     private UserService userService;
@@ -31,10 +32,6 @@ public class UserController {
     public User getUserInfo() {
         List<User> userList = userService.getUserInfo();
         User user = userList.get(0);
-        if (user != null) {
-            System.out.println("user.getName():" + user.getName());
-            logger.info("user.getAge():" + user.getAge());
-        }
         return user;
     }
 }

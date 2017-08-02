@@ -61,6 +61,17 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
             <version>${springboot.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <version>${springboot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-data-redis</artifactId>
+        </dependency>
+
         <!--Mysql / DataSource-->
         <dependency>
             <groupId>org.apache.tomcat</groupId>

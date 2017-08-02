@@ -11,7 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by 12490 on 2017/8/1.
@@ -29,8 +31,14 @@ public class UserController {
 
     @RequestMapping("/getUserInfo")
     @ResponseBody
-    public User getUserInfo() {
+    public User getUserInfo(HttpSession session) {
         List<User> userList = userService.getUserInfo();
+        session.setAttribute("userList", JSONObject.toJSONString(userList));
+        UUID uid = (UUID) session.getAttribute("uid");
+        if (uid == null) {
+            uid = UUID.randomUUID();
+        }
+        session.setAttribute("uid", uid);
         User user = userList.get(0);
         return user;
     }

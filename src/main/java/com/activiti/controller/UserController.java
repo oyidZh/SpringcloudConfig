@@ -1,10 +1,8 @@
 package com.activiti.controller;
 
-import com.activiti.mail.MailServiceImpl;
 import com.activiti.pojo.User;
 import com.activiti.service.UserService;
 import com.alibaba.fastjson.JSONObject;
-import org.apache.log4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -1,4 +1,4 @@
-package com.activiti.mail;
+package com.activiti.common.mail;
 
 /**发送邮件接口
  * Created by 12490 on 2017/8/2.

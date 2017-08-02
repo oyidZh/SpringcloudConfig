@@ -1,4 +1,4 @@
-package com.activiti.mail;
+package com.activiti.common.mail;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

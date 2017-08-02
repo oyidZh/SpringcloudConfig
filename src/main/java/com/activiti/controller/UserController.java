@@ -1,7 +1,9 @@
 package com.activiti.controller;
 
+import com.activiti.mail.MailServiceImpl;
 import com.activiti.pojo.User;
 import com.activiti.service.UserService;
+import com.alibaba.fastjson.JSONObject;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,9 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private MailServiceImpl mailService;
+
     /*
      *  http://localhost:8080/getUserInfo
      */
@@ -28,11 +33,12 @@ public class UserController {
     @ResponseBody
     public User getUserInfo() {
         List<User> userList = userService.getUserInfo();
-        User user=userList.get(0);
-        if(user!=null){
-            System.out.println("user.getName():"+user.getName());
-            logger.info("user.getAge():"+user.getAge());
+        User user = userList.get(0);
+        if (user != null) {
+            System.out.println("user.getName():" + user.getName());
+            logger.info("user.getAge():" + user.getAge());
         }
+        mailService.sendSimpleMail("1249055292@qq.com", "TestMail", JSONObject.toJSONString(userList));
         return user;
     }
 }

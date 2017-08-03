@@ -15,7 +15,7 @@ import javax.mail.internet.MimeMessage;
 import java.io.File;
 
 /**
- * 邮件发送实现类  TODO 可以考虑使用Kafka或者其他消息队列异步发送邮件，提高性能
+ * 邮件发送实现类
  * Created by 12490 on 2017/8/2.
  */
 @Component

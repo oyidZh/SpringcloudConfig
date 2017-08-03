@@ -69,7 +69,7 @@ public class WorkFlowApplicationTests {
     }
 
     /**
-     * 发送静态资源测试   TODO 有问题暂时
+     * 发送静态资源测试
      */
     @Test
     public void sendInlineResourceMailTest() throws FileNotFoundException {

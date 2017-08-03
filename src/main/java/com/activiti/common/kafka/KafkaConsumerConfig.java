@@ -16,11 +16,13 @@ import java.util.Map;
 
 
 /**
+ * Kafka消费者配置
  * Created by liulinhui on 2017/8/3.
  */
 @Configuration
 @EnableKafka
 public class KafkaConsumerConfig {
+
     @Bean
     public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, String>> kafkaListenerContainerFactory() {
         ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();

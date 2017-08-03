@@ -8,6 +8,7 @@ import org.springframework.kafka.annotation.KafkaListener;
 import java.util.Optional;
 
 /**
+ * kafka 消费者监听器
  * Created by liulinhui on 2017/8/3.
  */
 

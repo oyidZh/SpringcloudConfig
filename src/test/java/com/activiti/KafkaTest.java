@@ -10,6 +10,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
+ * Kafka测试类
  * Created by liulinhui on 2017/8/3.
  */
 @RunWith(SpringRunner.class)

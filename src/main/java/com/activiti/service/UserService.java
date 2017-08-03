@@ -16,7 +16,7 @@ public class UserService {
     @Autowired
     private UserMapper userMapper;
 
-    @Cacheable(value="userList")
+//    @Cacheable(value="userList")
     public List<User> getUserInfo(){
         List<User> user=userMapper.findUserInfo();
         System.out.println("去数据库里面查数据");

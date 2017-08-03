@@ -75,7 +75,6 @@ public class WorkFlowApplicationTests {
     public void sendInlineResourceMailTest() throws FileNotFoundException {
         File cfgFile = ResourceUtils.getFile("classpath:mail/static/meinv.jpeg");
         String rscId = "beauty001";
-        System.out.println(receiveAddr);
         String content = "<html><body>这是有图片的邮件：<img src=\'cid:" + rscId + "\' ></body></html>";
         mailService.sendInlineResourceMail(receiveAddr, "Activiti", content,
                 cfgFile.getAbsolutePath(), rscId);

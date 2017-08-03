@@ -25,7 +25,7 @@ public class KafkaTest {
     public void producerTest() throws InterruptedException {
         String data=JSONObject.toJSONString(userService.getUserInfo());
         kafkaTemplate.send("FUCKING_TEST", data);
-        Thread.sleep(2000);
+        Thread.sleep(5000);
     }
 
 }

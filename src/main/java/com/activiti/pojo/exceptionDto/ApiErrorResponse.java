@@ -45,4 +45,13 @@ public class ApiErrorResponse implements Serializable {
     public void setErrorCode(int errorCode) {
         this.errorCode = errorCode;
     }
+
+    @Override
+    public String toString() {
+        return "ApiErrorResponse{" +
+                "errorMessage='" + errorMessage + '\'' +
+                ", resCode=" + resCode +
+                ", errorCode=" + errorCode +
+                '}';
+    }
 }

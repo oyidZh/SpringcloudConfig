@@ -49,7 +49,7 @@ public class WorkFlowApplication {
         sqlSessionFactoryBean.setDataSource(dataSource());
 
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-
+        sqlSessionFactoryBean.setConfigLocation(resolver.getResource("classpath:/spring/mybatis-config.xml"));
         sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:/mybatis/**/*.xml"));
 
         return sqlSessionFactoryBean.getObject();

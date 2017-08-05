@@ -22,6 +22,8 @@
         <setting name="defaultExecutorType" value="REUSE"/>
         <!-- 数据库超过25000秒仍未响应则超时 -->
         <setting name="defaultStatementTimeout" value="25000"/>
+        <!-- 是否开启自动驼峰命名规则（camel case）映射，即从经典数据库列名 A_COLUMN 到经典 Java 属性名 aColumn 的类似映射。  默认false -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
 
     </settings>
 

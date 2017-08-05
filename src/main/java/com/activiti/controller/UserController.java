@@ -1,6 +1,6 @@
 package com.activiti.controller;
 
-import com.activiti.pojo.User;
+import com.activiti.pojo.user.User;
 import com.activiti.service.UserService;
 import com.alibaba.fastjson.JSONObject;
 import org.slf4j.LoggerFactory;

@@ -1,6 +1,6 @@
 package com.activiti.mapper;
 
-import com.activiti.pojo.User;
+import com.activiti.pojo.user.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

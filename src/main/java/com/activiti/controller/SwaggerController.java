@@ -1,6 +1,6 @@
 package com.activiti.controller;
 
-import com.activiti.pojo.User;
+import com.activiti.pojo.user.User;
 import com.wordnik.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,11 +23,11 @@ public class SwaggerController {
         List<User> list=new ArrayList<User>();
 
         User user=new User();
-        user.setName("hello");
+        user.setUserName("hello");
         list.add(user);
 
         User user2=new User();
-        user.setName("world");
+        user.setUserName("world");
         list.add(user2);
         return list;
     }
@@ -36,7 +36,7 @@ public class SwaggerController {
     @RequestMapping(value="/{name}",method= RequestMethod.GET)
     public User getUserById(@PathVariable String name){
         User user=new User();
-        user.setName(name);
+        user.setUserName(name);
         return user;
     }
 }

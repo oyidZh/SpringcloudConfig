@@ -1,6 +1,6 @@
 package com.activiti;
 
-import com.activiti.pojo.User;
+import com.activiti.pojo.user.User;
 import com.activiti.service.UserService;
 import com.alibaba.fastjson.JSONObject;
 import org.junit.Assert;
@@ -45,7 +45,7 @@ public class RedisTest {
      */
     @Test
     public void testObj() throws Exception {
-        User user=new User(123, "aa", 124, "aa");
+        User user=new User("123", "aa", "243", "aa");
         ValueOperations<String, User> operations=redisTemplate.opsForValue();
         operations.set("user", user);
         operations.set("user_expire", user,100, TimeUnit.SECONDS);
@@ -57,7 +57,7 @@ public class RedisTest {
         }else{
             System.out.println("exists is false");
         }
-         Assert.assertEquals("aa", operations.get("user_expire").getName());
+         Assert.assertEquals("aa", operations.get("user_expire").getUserName());
     }
 
     @Test

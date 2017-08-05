@@ -1,7 +1,7 @@
 package com.activiti;
 
 import com.activiti.common.mail.MailServiceImpl;
-import com.activiti.pojo.User;
+import com.activiti.pojo.user.User;
 import com.activiti.service.UserService;
 import com.alibaba.fastjson.JSONObject;
 import org.junit.Test;

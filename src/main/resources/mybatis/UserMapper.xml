@@ -3,7 +3,7 @@
 <mapper namespace="com.activiti.mapper.UserMapper">
 
     <select id="findUserInfo" resultType="com.activiti.pojo.user.User">
-        select user_id,user_name,email_address,ability_level from user;
+        select user_id,user_name,email_address,ability_level from JUDGE_USER;
     </select>
 
 </mapper>

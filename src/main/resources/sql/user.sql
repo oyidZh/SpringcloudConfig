@@ -18,7 +18,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 -- Table structure for user
 -- ----------------------------
-CREATE TABLE IF NOT EXISTS `user`(
+CREATE TABLE IF NOT EXISTS `JUDGE_USER`(
   `user_id` varchar(20) NOT NULL,
   `user_name` varchar(20) DEFAULT NULL,
   `email_address` varchar(30) DEFAULT NULL,

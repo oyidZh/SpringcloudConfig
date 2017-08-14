@@ -1,6 +1,7 @@
 package com.activiti.common.utils;
 
 /**
+ * 常量池
  * Created by 12490 on 2017/8/15.
  */
 public class ConstantsUtils {

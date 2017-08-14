@@ -1,6 +1,7 @@
 package com.activiti.common.utils;
 
 import com.alibaba.fastjson.JSONObject;
+import com.sun.xml.internal.ws.api.message.ExceptionHasMessage;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.HttpGet;

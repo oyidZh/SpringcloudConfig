@@ -17,9 +17,16 @@ public class CommonController {
     @Autowired
     private CommonService commonService;
 
+    /**
+     * gitlab请求题目和答案
+     *
+     * @param qDir
+     * @param qNo
+     * @return
+     */
     @RequestMapping("/getQAContent")
     @ResponseBody
-    public JSONObject getQAFromGitLab(@RequestParam(value="url", required=true)String url){
-       return commonService.getQAFromGitLab(url);
+    public JSONObject getQAFromGitLab(@RequestParam(value = "qDir", required = true) String qDir, @RequestParam(value = "qNo", required = true) String qNo) {
+        return commonService.getQAFromGitLab(qDir, qNo);
     }
 }

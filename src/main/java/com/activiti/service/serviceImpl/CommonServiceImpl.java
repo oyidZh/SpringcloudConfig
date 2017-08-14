@@ -1,6 +1,7 @@
 package com.activiti.service.serviceImpl;
 
 import com.activiti.common.utils.CommonUtil;
+import com.activiti.common.utils.ConstantsUtils;
 import com.activiti.service.CommonService;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +21,14 @@ public class CommonServiceImpl implements CommonService {
     /**
      * 从gitlab取题目数据
      *
-     * @param url
+     * @param qDir 题目地址
+     * @param qNo  题目序号
      * @return
      */
     @Override
-    @Cacheable(value="test",key="'QAFromGitLab_'+#url")
-    public JSONObject getQAFromGitLab(String url) {
+    @Cacheable(value = "test", key = "'QAFromGitLab_'+#qDir+#qNo")
+    public JSONObject getQAFromGitLab(String qDir, String qNo)  {
+        String url = ConstantsUtils.QAFromGitLabUrl + qDir + "/" + qNo + ".json";
         return commonUtil.getQAFromGitLab(url);
     }
 }

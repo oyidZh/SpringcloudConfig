@@ -18,7 +18,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
-    @Cacheable(value = "test" )
     @Override
     public List<User> getUserInfo() {
         return userMapper.findUserInfo();

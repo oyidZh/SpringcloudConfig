@@ -1,7 +1,6 @@
 package com.activiti.common.Exception;
 
 import com.activiti.pojo.exceptionDto.ApiErrorResponse;
-import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;

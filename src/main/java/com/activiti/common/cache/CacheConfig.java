@@ -1,11 +1,10 @@
 package com.activiti.common.cache;
 
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
 import org.springframework.cache.interceptor.KeyGenerator;
+import org.springframework.cache.interceptor.SimpleKeyGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import java.lang.reflect.Method;
 
@@ -20,11 +19,11 @@ public class CacheConfig {
     public KeyGenerator keyGenerator() {
         return new KeyGenerator() {
             @Override
-            public Object generate(Object target, Method method, Object... params) {
+            public Object generate(Object o, Method method, Object... objects) {
                 StringBuilder sb = new StringBuilder();
-                sb.append(target.getClass().getName());
+                sb.append(o.getClass().getName());
                 sb.append(method.getName());
-                for (Object obj : params) {
+                for (Object obj : objects) {
                     sb.append(obj.toString());
                 }
                 return sb.toString();

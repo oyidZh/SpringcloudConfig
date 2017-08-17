@@ -43,6 +43,7 @@
     </bean>
 
     <!-- 注解声明 -->
-    <cache:annotation-driven cache-manager="ehRedisCacheManager"
-                             proxy-target-class="true"/>
+    <!--<cache:annotation-driven cache-manager="ehRedisCacheManager"-->
+                             <!--proxy-target-class="true"/>-->
+    <cache:advice  id="cacheAdvice" cache-manager="ehRedisCacheManager"  key-generator="keyGenerator" />
 </beans>

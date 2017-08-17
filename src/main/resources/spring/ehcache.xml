@@ -34,22 +34,22 @@
                   diskPersistent="false"
                   diskExpiryThreadIntervalSeconds="120"
                   memoryStoreEvictionPolicy="LRU"/>
-    <!--测试缓存5秒-->
-    <cache name="test"
+
+    <cache name="ehCache1"
            maxElementsInMemory="10000"
            eternal="false"
            overflowToDisk="true"
-           timeToIdleSeconds="5"
-           timeToLiveSeconds="5"
+           timeToIdleSeconds="40"
+           timeToLiveSeconds="40"
            memoryStoreEvictionPolicy="LFU">
     </cache>
-    <!--缓存一个小时-->
-    <cache name="userCache"
+
+    <cache name="ehCache2"
            maxElementsInMemory="10000"
            eternal="false"
            overflowToDisk="true"
-           timeToIdleSeconds="3600"
-           timeToLiveSeconds="3600"
+           timeToIdleSeconds="10"
+           timeToLiveSeconds="10"
            memoryStoreEvictionPolicy="LFU">
     </cache>
 

@@ -13,8 +13,12 @@
     </bean>
 
     <!-- ehCache 操作对象 -->
-    <bean id="ehCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
-        <property name="cacheName" value="ehCache"/>
+    <bean id="ehCache1" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+        <property name="cacheName" value="ehCache1"/>
+        <property name="cacheManager" ref="ehcacheManager"/>
+    </bean>
+    <bean id="ehCache2" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+        <property name="cacheName" value="ehCache2"/>
         <property name="cacheManager" ref="ehcacheManager"/>
     </bean>
 
@@ -24,15 +28,15 @@
             <set>
                 <bean id="usereEhRedisCache" class="com.activiti.common.cache.EhRedisCache">
                     <property name="redisTemplate" ref="redisTemplate"/>
-                    <property name="ehCache" ref="ehCache"/>
-                    <property name="name" value="userCache"/>
-                    <property name="liveTime" value="3600"/>
+                    <property name="ehCache" ref="ehCache1"/>
+                    <property name="name" value="ehCache1"/>
+                    <property name="liveTime" value="60"/>
                 </bean>
                 <bean id="testEhRedisCache" class="com.activiti.common.cache.EhRedisCache">
                     <property name="redisTemplate" ref="redisTemplate"/>
-                    <property name="ehCache" ref="ehCache"/>
-                    <property name="name" value="test"/>
-                    <property name="liveTime" value="20"/>
+                    <property name="ehCache" ref="ehCache2"/>
+                    <property name="name" value="ehCache2"/>
+                    <property name="liveTime" value="30"/>
                 </bean>
             </set>
         </property>

@@ -3,6 +3,7 @@ package com.activiti.common.cache;
 import net.sf.ehcache.Element;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.Cache;
 import org.springframework.cache.support.SimpleValueWrapper;
 import org.springframework.dao.DataAccessException;
@@ -23,13 +24,17 @@ public class EhRedisCache implements Cache {
 
     private static final Logger logger = LoggerFactory.getLogger(EhRedisCache.class);
 
+    @Autowired
+    private RedisCommonUtil redisCommonUtil;
+
     private String name;
 
     private net.sf.ehcache.Cache ehCache;
 
     private RedisTemplate<String, String> redisTemplate;
 
-    private long liveTime = 1*60*60; //默认1h=1*60*60
+    private long liveTime = 1 * 60 * 60; //默认1h=1*60*60
+
     @Override
     public String getName() {
         return this.name;
@@ -43,29 +48,14 @@ public class EhRedisCache implements Cache {
     @Override
     public ValueWrapper get(Object key) {
         Element value = ehCache.get(key);
-        logger.info("Cache L1 get (ehcache) :{}={}",key,value);
-        if (value!=null) {
+        logger.info("Cache L1 get (ehcache) :{}={}", key, value);
+        if (value != null) {
             return (value != null ? new SimpleValueWrapper(value.getObjectValue()) : null);
         }
         final String keyStr = key.toString();
-        Object objectValue = redisTemplate.execute(new RedisCallback<Object>() {
-            public Object doInRedis(RedisConnection connection)
-                    throws DataAccessException {
-                byte[] key = keyStr.getBytes();
-                byte[] value = connection.get(key);
-                if (value == null) {
-                    return null;
-                }
-                //每次获得，重置缓存过期时间
-                if (liveTime > 0) {
-                    connection.expire(key, liveTime);
-                }
-                return toObject(value);
-            }
-        },true);
+        Object objectValue = redisCommonUtil.get(keyStr);
         ehCache.put(new Element(key, objectValue));//取出来之后缓存到本地
-        logger.info("Cache L2 get (redis) :{}={}",key,objectValue);
-        return  (objectValue != null ? new SimpleValueWrapper(objectValue) : null);
+        return (objectValue != null ? new SimpleValueWrapper(objectValue) : null);
     }
 
     @Override
@@ -81,26 +71,10 @@ public class EhRedisCache implements Cache {
     @Override
     public void put(Object key, Object value) {
         ehCache.put(new Element(key, value));
-        final String keyStr =  key.toString();
+        logger.info("Cache L1 put (ehcache) :{}={}", key, value);
+        final String keyStr = key.toString();
         final Object valueStr = value;
-        redisTemplate.execute(new RedisCallback<Long>() {
-            public Long doInRedis(RedisConnection connection)
-                    throws DataAccessException {
-                byte[] keyb = keyStr.getBytes();
-                byte[] valueb = new byte[0];
-                try {
-                    valueb = toByteArray(valueStr);
-                } catch (NotSerializableException e) {
-                    e.printStackTrace();
-                }
-                connection.set(keyb, valueb);
-                logger.info("Cache L2 put (redis) :{}={}",key,valueb);
-                if (liveTime > 0) {
-                    connection.expire(keyb, liveTime);
-                }
-                return 1L;
-            }
-        },true);
+        redisCommonUtil.put(keyStr, value, liveTime);
     }
 
     @Override
@@ -111,25 +85,14 @@ public class EhRedisCache implements Cache {
     @Override
     public void evict(Object key) {
         ehCache.remove(key);
-        final String keyStr =  key.toString();
-        redisTemplate.execute(new RedisCallback<Long>() {
-            public Long doInRedis(RedisConnection connection)
-                    throws DataAccessException {
-                return connection.del(keyStr.getBytes());
-            }
-        },true);
+        final String keyStr = key.toString();
+        redisCommonUtil.deleteOne(keyStr);
     }
 
     @Override
     public void clear() {
         ehCache.removeAll();
-        redisTemplate.execute(new RedisCallback<String>() {
-            public String doInRedis(RedisConnection connection)
-                    throws DataAccessException {
-                connection.flushDb();
-                return "clear done.";
-            }
-        },true);
+        redisCommonUtil.deleteAll();
     }
 
     public void setName(String name) {

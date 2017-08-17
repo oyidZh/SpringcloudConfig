@@ -11,11 +11,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.types.Expiration;
 import org.springframework.stereotype.Component;
 
-import java.io.NotSerializableException;
-
-import static com.mchange.v2.ser.SerializableUtils.toByteArray;
-import static jdk.nashorn.internal.runtime.JSType.toObject;
-
+import java.io.*;
 /**
  * Created by 12490 on 2017/8/17.
  */
@@ -60,11 +56,7 @@ public class RedisCommonUtil {
                     throws DataAccessException {
                 byte[] keyb = key.getBytes();
                 byte[] valueb = new byte[0];
-                try {
-                    valueb = toByteArray(valueStr);
-                } catch (NotSerializableException e) {
-                    e.printStackTrace();
-                }
+                valueb = toByteArray(valueStr);
                 connection.set(keyb, valueb, Expiration.seconds(liveTime), RedisStringCommands.SetOption.UPSERT);
                 logger.info("Cache L2 put (redis) :{}={}", key, valueb);
                 if (liveTime > 0) {
@@ -99,5 +91,47 @@ public class RedisCommonUtil {
                 return connection.del(key.getBytes());
             }
         }, true);
+    }
+
+    /**
+     * 描述 : Object转byte[]. <br>
+     * @param obj
+     * @return
+     */
+    private byte[] toByteArray(Object obj) {
+        byte[] bytes = null;
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        try {
+            ObjectOutputStream oos = new ObjectOutputStream(bos);
+            oos.writeObject(obj);
+            oos.flush();
+            bytes = bos.toByteArray();
+            oos.close();
+            bos.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return bytes;
+    }
+
+    /**
+     * 描述 :  byte[]转Object . <br>
+     * @param bytes
+     * @return
+     */
+    private Object toObject(byte[] bytes) {
+        Object obj = null;
+        try {
+            ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
+            ObjectInputStream ois = new ObjectInputStream(bis);
+            obj = ois.readObject();
+            ois.close();
+            bis.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        return obj;
     }
 }

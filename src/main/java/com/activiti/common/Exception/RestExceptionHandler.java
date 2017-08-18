@@ -1,6 +1,6 @@
 package com.activiti.common.Exception;
 
-import com.activiti.pojo.exceptionDto.ApiErrorResponse;
+import com.activiti.pojo.restApiDto.RestApiResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -21,28 +21,28 @@ public class RestExceptionHandler {
 
     @ExceptionHandler(value = {ConstraintViolationException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ApiErrorResponse constraintViolationException(ConstraintViolationException ex) {
-        return new ApiErrorResponse(500, 5001, ex.getMessage());
+    public RestApiResponse constraintViolationException(ConstraintViolationException ex) {
+        return new RestApiResponse(500, ex.getMessage(),false);
     }
 
     @ExceptionHandler(value = {IllegalArgumentException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ApiErrorResponse IllegalArgumentException(IllegalArgumentException ex) {
-        return new ApiErrorResponse(501, 5002, ex.getMessage());
+    public RestApiResponse IllegalArgumentException(IllegalArgumentException ex) {
+        return new RestApiResponse(501, ex.getMessage(),false);
     }
 
     @ExceptionHandler(value = {NoHandlerFoundException.class})
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ApiErrorResponse noHandlerFoundException(Exception ex) {
-        return new ApiErrorResponse(404, 4041, ex.getMessage());
+    public RestApiResponse noHandlerFoundException(Exception ex) {
+        return new RestApiResponse(404, ex.getMessage(),false);
     }
 
 
     @ExceptionHandler(value = {Exception.class})
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public ApiErrorResponse unknownException(Exception ex) {
+    public RestApiResponse unknownException(Exception ex) {
         ex.printStackTrace();
-        return new ApiErrorResponse(500, 5002, ex.getMessage());
+        return new RestApiResponse(500, ex.getMessage(),false);
     }
 
 }

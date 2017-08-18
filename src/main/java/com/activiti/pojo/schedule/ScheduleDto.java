@@ -12,12 +12,12 @@ public class ScheduleDto implements Serializable {
 
     private String courseName;  //课程名称
     private String courseCode;  //课程代码
-    private Date startTime;    //作业开始时间时间
-    private Date commitEndTime;   //提交作业结束时间
+    private Date startTime;      //提交作业开始时间
+    private Date commitEndTime;  //提交作业结束时间
     private Date judgeStartTime; //互评开始时间
-    private Date judgeEndTime;    //互评结束时间
-    private Date AuditStartTime;  //学生审查开始时间
-    private Date AuditEndTime;   //学生审查结束时间
+    private Date judgeEndTime;   //互评结束时间
+    private Date auditStartTime;  //学生审查开始时间
+    private Date auditEndTime;   //学生审查结束时间
     private Date publishTime;    //发布成绩时间
 
     public ScheduleDto() {
@@ -72,19 +72,19 @@ public class ScheduleDto implements Serializable {
     }
 
     public Date getAuditStartTime() {
-        return AuditStartTime;
+        return auditStartTime;
     }
 
     public void setAuditStartTime(Date auditStartTime) {
-        AuditStartTime = auditStartTime;
+        this.auditStartTime = auditStartTime;
     }
 
     public Date getAuditEndTime() {
-        return AuditEndTime;
+        return auditEndTime;
     }
 
     public void setAuditEndTime(Date auditEndTime) {
-        AuditEndTime = auditEndTime;
+        this.auditEndTime = auditEndTime;
     }
 
     public Date getPublishTime() {
@@ -104,8 +104,8 @@ public class ScheduleDto implements Serializable {
                 ", commitEndTime=" + commitEndTime +
                 ", judgeStartTime=" + judgeStartTime +
                 ", judgeEndTime=" + judgeEndTime +
-                ", AuditStartTime=" + AuditStartTime +
-                ", AuditEndTime=" + AuditEndTime +
+                ", auditStartTime=" + auditStartTime +
+                ", auditEndTime=" + auditEndTime +
                 ", publishTime=" + publishTime +
                 '}';
     }

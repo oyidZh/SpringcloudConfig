@@ -1,4 +1,4 @@
-package com.activiti.pojo.exceptionDto;
+package com.activiti.pojo.restApiDto;
 
 import java.io.Serializable;
 
@@ -6,19 +6,25 @@ import java.io.Serializable;
  * 异常信息返回
  * Created by liulinhui on 2017/8/5.
  */
-public class ApiErrorResponse implements Serializable {
+public class RestApiResponse implements Serializable {
     private static final long serialVersionUID = 2120869894112984147L;
     private String errorMessage;  //错误信息
     private int resCode;    //返回码
-    private int errorCode;   //错误码
+    private boolean success;
+    private Object data;
 
-    public ApiErrorResponse(int resCode, int errorCode, String errorMessage) {
+    public RestApiResponse(int resCode, String errorMessage, boolean success) {
         this.errorMessage = errorMessage;
         this.resCode = resCode;
-        this.errorCode = errorCode;
+        this.success = success;
     }
 
-    public ApiErrorResponse() {
+    public RestApiResponse(boolean success, Object data) {
+        this.success = success;
+        this.data = data;
+    }
+
+    public RestApiResponse() {
 
     }
 
@@ -38,20 +44,11 @@ public class ApiErrorResponse implements Serializable {
         this.resCode = resCode;
     }
 
-    public int getErrorCode() {
-        return errorCode;
-    }
-
-    public void setErrorCode(int errorCode) {
-        this.errorCode = errorCode;
-    }
-
     @Override
     public String toString() {
-        return "ApiErrorResponse{" +
+        return "RestApiResponse{" +
                 "errorMessage='" + errorMessage + '\'' +
                 ", resCode=" + resCode +
-                ", errorCode=" + errorCode +
                 '}';
     }
 }

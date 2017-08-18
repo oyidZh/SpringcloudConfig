@@ -1,17 +1,14 @@
 package com.activiti.common.cache;
 
+import com.activiti.common.redis.RedisCommonUtil;
 import net.sf.ehcache.Element;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.Cache;
 import org.springframework.cache.support.SimpleValueWrapper;
-import org.springframework.dao.DataAccessException;
-import org.springframework.data.redis.connection.RedisConnection;
-import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 
-import java.io.NotSerializableException;
 import java.util.concurrent.Callable;
 
 import static com.mchange.v2.ser.SerializableUtils.toByteArray;

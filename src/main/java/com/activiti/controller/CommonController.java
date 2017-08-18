@@ -1,5 +1,6 @@
 package com.activiti.controller;
 
+import com.activiti.common.aop.ApiAnnotation;
 import com.activiti.pojo.schedule.ScheduleDto;
 import com.activiti.service.CommonService;
 import com.activiti.service.ScheduleService;
@@ -33,7 +34,8 @@ public class CommonController {
      */
     @RequestMapping("/getQAContent")
     @ResponseBody
-    public JSONObject getQAFromGitLab(@RequestParam(value = "qDir", required = true) String qDir,
+    @ApiAnnotation
+    public Object getQAFromGitLab(@RequestParam(value = "qDir", required = true) String qDir,
                                       @RequestParam(value = "qNo", required = true) String qNo) {
         return commonService.getQAFromGitLab(qDir, qNo);
     }
@@ -46,7 +48,8 @@ public class CommonController {
      */
     @RequestMapping("/selectScheduleTime")
     @ResponseBody
-    public ScheduleDto selectScheduleTime(@RequestParam(value = "courseCode", required = true) String courseCode) {
+    @ApiAnnotation
+    public Object selectScheduleTime(@RequestParam(value = "courseCode", required = true) String courseCode) {
         return scheduleService.selectScheduleTime(courseCode);
     }
 
@@ -58,7 +61,8 @@ public class CommonController {
      */
     @RequestMapping("/insertScheduleTime")
     @ResponseBody
-    public ScheduleDto insertScheduleTime(@RequestParam(value = "schedule", required = true) ScheduleDto scheduleDto) throws Exception {
+    @ApiAnnotation
+    public Object insertScheduleTime(@RequestParam(value = "schedule", required = true) ScheduleDto scheduleDto) throws Exception {
         String courseCode = scheduleDto.getCourseCode();
         if (null == courseCode) throw new Exception("courseCode字段不能为空");
         scheduleService.insertScheduleTime(scheduleDto);
@@ -73,7 +77,8 @@ public class CommonController {
      */
     @RequestMapping("/updateScheduleTime")
     @ResponseBody
-    public ScheduleDto updateScheduleTime(@RequestParam(value = "schedule", required = true) ScheduleDto scheduleDto) throws Exception {
+    @ApiAnnotation
+    public Object updateScheduleTime(@RequestParam(value = "schedule", required = true) ScheduleDto scheduleDto) throws Exception {
         String courseCode = scheduleDto.getCourseCode();
         if (null == courseCode) throw new Exception("courseCode字段不能为空");
         scheduleService.updateScheduleTime(scheduleDto);
@@ -87,7 +92,8 @@ public class CommonController {
      */
     @RequestMapping("/selectAllScheduleTime")
     @ResponseBody
-    public List<ScheduleDto> selectAllScheduleTime() {
+    @ApiAnnotation
+    public Object selectAllScheduleTime() {
         return scheduleService.selectAllScheduleTime();
     }
 
@@ -98,7 +104,8 @@ public class CommonController {
      */
     @RequestMapping("/selectTimeStage")
     @ResponseBody
-    public List<ScheduleDto> selectAllScheduleTime(@RequestParam(value = "courseCode", required = true) String courseCode) {
+    @ApiAnnotation
+    public Object selectAllScheduleTime(@RequestParam(value = "courseCode", required = true) String courseCode) {
         return scheduleService.selectAllScheduleTime();
     }
 }

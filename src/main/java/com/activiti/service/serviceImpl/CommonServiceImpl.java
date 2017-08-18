@@ -26,7 +26,7 @@ public class CommonServiceImpl implements CommonService {
      * @return
      */
     @Override
-    @Cacheable(value = "test", key = "'QAFromGitLab_'+#qDir+#qNo")
+    @Cacheable(value = "ehCache2", key = "'QAFromGitLab_'+#qDir+#qNo")
     public JSONObject getQAFromGitLab(String qDir, String qNo)  {
         String url = ConstantsUtils.QAFromGitLabUrl + qDir + "/" + qNo + ".json";
         return commonUtil.getQAFromGitLab(url);

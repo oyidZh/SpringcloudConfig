@@ -36,7 +36,7 @@
                     <property name="redisTemplate" ref="redisTemplate"/>
                     <property name="ehCache" ref="ehCache2"/>
                     <property name="name" value="ehCache2"/>
-                    <property name="liveTime" value="30"/>
+                    <property name="liveTime" value="3600"/>
                 </bean>
             </set>
         </property>

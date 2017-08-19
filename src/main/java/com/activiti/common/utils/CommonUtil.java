@@ -1,5 +1,8 @@
 package com.activiti.common.utils;
 
+import com.activiti.common.mail.MailService;
+import com.activiti.pojo.email.EmailDto;
+import com.activiti.pojo.email.EmailType;
 import com.activiti.service.ScheduleService;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.http.HttpResponse;
@@ -25,14 +28,18 @@ public class CommonUtil {
     private static final Logger logger = LoggerFactory.getLogger(CommonUtil.class);
 
     @Autowired
+    private MailService mailService;
+    @Autowired
     private ScheduleService scheduleService;
+
 
     /**
      * 请求gitlab获取题目与答案
+     *
      * @param url
      * @return
      */
-    public JSONObject getQAFromGitLab(String url){
+    public JSONObject getQAFromGitLab(String url) {
         //get请求返回结果
         JSONObject jsonResult = null;
         try {
@@ -53,4 +60,20 @@ public class CommonUtil {
         return jsonResult;
     }
 
+    /**
+     * 发邮件
+     *
+     * @param emailDto
+     */
+    public void sendEmail(EmailDto emailDto) {
+        if (emailDto.getType() == EmailType.simple) {
+            mailService.sendSimpleMail(emailDto.getAddress(), emailDto.getSubject(), emailDto.getContent());
+        } else if (emailDto.getType() == EmailType.html) {
+            mailService.sendHtmlMail(emailDto.getAddress(), emailDto.getSubject(), emailDto.getContent());
+        } else if (emailDto.getType() == EmailType.attachment) {
+            mailService.sendAttachmentsMail(emailDto.getAddress(), emailDto.getSubject(), emailDto.getContent(), emailDto.getRscPath());
+        } else if (emailDto.getType() == EmailType.resource) {
+            mailService.sendInlineResourceMail(emailDto.getAddress(), emailDto.getSubject(), emailDto.getContent(), emailDto.getRscPath(), emailDto.getRscId());
+        }
+    }
 }

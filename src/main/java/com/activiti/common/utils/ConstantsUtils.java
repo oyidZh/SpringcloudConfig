@@ -12,4 +12,6 @@ public class ConstantsUtils {
 
     public static final String stage1="stage1";  //
 
+    public static  final String emailTopic="EMAIL";
+
 }

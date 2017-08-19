@@ -47,4 +47,10 @@
                              key-generator="keyGenerator"
                              proxy-target-class="true"/>
     <!--<cache:advice  id="cacheAdvice" cache-manager="ehRedisCacheManager"  key-generator="keyGenerator" />-->
+
+    <!--Quartz配置-->
+    <bean id="SchedulerFactory" class="org.quartz.impl.StdSchedulerFactory"></bean>
+    <bean id="QuartzManager" class="com.activiti.common.quartz.QuartzManager">
+        <constructor-arg ref="SchedulerFactory"></constructor-arg>
+    </bean>
 </beans>

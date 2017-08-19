@@ -1,7 +1,7 @@
 package com.activiti.common.utils;
 
+import com.activiti.service.ScheduleService;
 import com.alibaba.fastjson.JSONObject;
-import com.sun.xml.internal.ws.api.message.ExceptionHasMessage;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.HttpGet;
@@ -10,6 +10,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -22,6 +23,9 @@ import java.net.URLDecoder;
 @Component
 public class CommonUtil {
     private static final Logger logger = LoggerFactory.getLogger(CommonUtil.class);
+
+    @Autowired
+    private ScheduleService scheduleService;
 
     /**
      * 请求gitlab获取题目与答案
@@ -48,4 +52,5 @@ public class CommonUtil {
         }
         return jsonResult;
     }
+
 }

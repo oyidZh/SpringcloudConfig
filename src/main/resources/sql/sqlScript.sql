@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS JUDGE_STU_INFO (
  INDEX index_email_address (EMAIL_ADDRESS),
   PRIMARY KEY (USER_ID)
 )
-  ENGINE = MyISAM
+  ENGINE = MyISAM  -- 采用MyISAM防止主键id自增出现断层现象
   DEFAULT CHARSET = utf8;
 
 -- ----------------------------

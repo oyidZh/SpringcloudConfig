@@ -19,8 +19,17 @@ public class ScheduleDto implements Serializable {
     private Date auditStartTime;  //学生审查开始时间
     private Date auditEndTime;   //学生审查结束时间
     private Date publishTime;    //发布成绩时间
+    private int judgeTimes;    //每个学生需要互评的次数（后期算出）
 
     public ScheduleDto() {
+    }
+
+    public int getJudgeTimes() {
+        return judgeTimes;
+    }
+
+    public void setJudgeTimes(int judgeTimes) {
+        this.judgeTimes = judgeTimes;
     }
 
     public String getCourseName() {
@@ -107,6 +116,7 @@ public class ScheduleDto implements Serializable {
                 ", auditStartTime=" + auditStartTime +
                 ", auditEndTime=" + auditEndTime +
                 ", publishTime=" + publishTime +
+                ", judgeTimes=" + judgeTimes +
                 '}';
     }
 }

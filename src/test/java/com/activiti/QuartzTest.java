@@ -27,11 +27,11 @@ public class QuartzTest {
             System.out.println("【系统启动】开始(每1秒输出一次)...");
             quartzManager.addJob(JOB_NAME, JOB_GROUP_NAME, TRIGGER_NAME, TRIGGER_GROUP_NAME, DistributeWork.class, "0/1 * * * * ?");
 
-            Thread.sleep(5000);
+            Thread.sleep(10000);
             System.out.println("【修改时间】开始(每5秒输出一次)...");
             quartzManager.modifyJobTime(JOB_NAME, JOB_GROUP_NAME, TRIGGER_NAME, TRIGGER_GROUP_NAME, "0/5 * * * * ?");
 
-            Thread.sleep(6000);
+            Thread.sleep(30000);
             System.out.println("【移除定时】开始...");
             quartzManager.removeJob(JOB_NAME, JOB_GROUP_NAME, TRIGGER_NAME, TRIGGER_GROUP_NAME);
             System.out.println("【移除定时】成功");

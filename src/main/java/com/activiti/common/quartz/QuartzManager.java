@@ -1,7 +1,6 @@
 package com.activiti.common.quartz;
 
 import org.quartz.*;
-import org.quartz.impl.StdSchedulerFactory;
 
 /**
  * Created by 12490 on 2017/8/19.

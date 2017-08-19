@@ -22,8 +22,8 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class WorkFlowApplicationTests {
-    private static Logger logger = LoggerFactory.getLogger(WorkFlowApplicationTests.class);
+public class MailTests {
+    private static Logger logger = LoggerFactory.getLogger(MailTests.class);
     @Autowired
     private UserService userService;
     @Autowired

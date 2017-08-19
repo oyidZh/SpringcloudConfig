@@ -26,7 +26,7 @@ public class CommonController {
     private ScheduleService scheduleService;
 
     /**
-     * gitlab请求题目和答案
+     * GitHub请求题目和答案
      *
      * @param qDir
      * @param qNo
@@ -35,9 +35,9 @@ public class CommonController {
     @RequestMapping("/getQAContent")
     @ResponseBody
     @ApiAnnotation
-    public Object getQAFromGitLab(@RequestParam(value = "qDir", required = true) String qDir,
+    public Object getQAFromGitHub(@RequestParam(value = "qDir", required = true) String qDir,
                                       @RequestParam(value = "qNo", required = true) String qNo) {
-        return commonService.getQAFromGitLab(qDir, qNo);
+        return commonService.getQAFromGitHub(qDir, qNo);
     }
 
     /**

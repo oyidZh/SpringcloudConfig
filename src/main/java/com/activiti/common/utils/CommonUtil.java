@@ -39,7 +39,7 @@ public class CommonUtil {
      * @param url
      * @return
      */
-    public JSONObject getQAFromGitLab(String url) {
+    public JSONObject getQAFromGitHub(String url) {
         //get请求返回结果
         JSONObject jsonResult = null;
         try {

@@ -3,7 +3,16 @@
 <mapper namespace="com.activiti.mapper.UserMapper">
 
     <select id="findUserInfo" resultType="com.activiti.pojo.user.User">
-        select user_id,user_name,email_address,ability_level from JUDGE_USER;
+        SELECT *
+        FROM judge_stu_info
+        WHERE EMAIL_ADDRESS = #{emailAddr};
     </select>
+
+    <insert id="insertUser" parameterType="com.activiti.pojo.user.User">
+        INSERT IGNORE INTO judge_stu_info
+        (USER_NAME, EMAIL_ADDRESS, ABILITY_LEVEL)
+        VALUES
+            (#{userName}, #{emailAddress}, #{abilityLevel})
+    </insert>
 
 </mapper>

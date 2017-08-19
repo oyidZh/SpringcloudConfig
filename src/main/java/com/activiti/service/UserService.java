@@ -12,5 +12,5 @@ import java.util.List;
  */
 public interface UserService {
 
-    public List<User> getUserInfo();
+    public User getUserInfo(String email_address);
 }

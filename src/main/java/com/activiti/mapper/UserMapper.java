@@ -10,5 +10,8 @@ import java.util.List;
  */
 @Repository
 public interface UserMapper {
-    List<User> findUserInfo();
+
+    User findUserInfo(String emailAddr);
+
+    int insertUser(User user);
 }

@@ -5,12 +5,13 @@ package com.activiti.pojo.email;
  * Created by 12490 on 2017/8/19.
  */
 public class EmailDto {
-    private String address;
-    private EmailType type;
-    private String subject;
-    private String content;
-    private String rscPath;
-    private String rscId;
+    private static final long serialVersionUID = 2120869894112984147L;
+    private String address;  //email 地址
+    private EmailType type;   //Email类型
+    private String subject;    //主题
+    private String content;     //内容
+    private String rscPath;      //资源地址
+    private String rscId;       //资源id
 
     public EmailDto() {
     }

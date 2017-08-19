@@ -21,8 +21,8 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    @Cacheable(value = "ehCache1",keyGenerator = "keyGenerator")
-    public List<User> getUserInfo() {
-        return userMapper.findUserInfo();
+    @Cacheable(value = "ehCache1", keyGenerator = "keyGenerator")
+    public User getUserInfo(String email_address) {
+        return userMapper.findUserInfo(email_address);
     }
 }

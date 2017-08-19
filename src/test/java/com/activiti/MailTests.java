@@ -25,8 +25,6 @@ import java.util.List;
 public class MailTests {
     private static Logger logger = LoggerFactory.getLogger(MailTests.class);
     @Autowired
-    private UserService userService;
-    @Autowired
     private MailServiceImpl mailService;
 
     @Value("${test.mail.receiveAddr}")
@@ -39,8 +37,7 @@ public class MailTests {
      */
     @Test
     public void sendSimpleMailTest() {
-        List<User> userList = userService.getUserInfo();
-        mailService.sendSimpleMail(receiveAddr, "Activiti", JSONObject.toJSONString(userList));
+        mailService.sendSimpleMail(receiveAddr, "Activiti", JSONObject.toJSONString(CommonTestUtil.getUserInfo()));
     }
 
     /**
@@ -48,10 +45,9 @@ public class MailTests {
      */
     @Test
     public void sendHtmlMailTest() {
-        List<User> userList = userService.getUserInfo();
         String content = "<html>\n" +
                 "<body>\n" +
-                "    <h3>hello world ! 这是一封Html邮件!hahaha" + JSONObject.toJSONString(userList) + "</h3>\n" +
+                "    <h3>hello world ! 这是一封Html邮件!hahaha" + JSONObject.toJSONString(CommonTestUtil.getUserInfo()) + "</h3>\n" +
                 "</body>\n" +
                 "</html>";
         mailService.sendHtmlMail(receiveAddr, "Activiti", content);
@@ -63,9 +59,8 @@ public class MailTests {
     @Test
     public void sendAttachmentsMailTest() throws FileNotFoundException {
         File cfgFile = ResourceUtils.getFile("classpath:mail/attachments/test.txt");
-        List<User> userList = userService.getUserInfo();
         mailService.sendAttachmentsMail(receiveAddr,
-                "主题：带附件的邮件", JSONObject.toJSONString(userList), cfgFile.getAbsolutePath());
+                "主题：带附件的邮件", JSONObject.toJSONString(CommonTestUtil.getUserInfo()), cfgFile.getAbsolutePath());
     }
 
     /**

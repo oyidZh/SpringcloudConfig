@@ -3,6 +3,7 @@ package com.activiti.common.quartz;
 import org.quartz.*;
 
 /**
+ * quartz管理器
  * Created by 12490 on 2017/8/19.
  */
 public class QuartzManager {

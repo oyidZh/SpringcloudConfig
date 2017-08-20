@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import java.lang.reflect.Method;
 
 /**
+ * 接口统一出参注解
  * Created by 12490 on 2017/8/19.
  */
 @Aspect

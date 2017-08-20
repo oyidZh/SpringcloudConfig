@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 /**
+ * 分配作业
  * Created by 12490 on 2017/8/19.
  */
 @Component

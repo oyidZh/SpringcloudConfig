@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.*;
 /**
+ * redis共通帮助类
  * Created by 12490 on 2017/8/17.
  */
 @Component

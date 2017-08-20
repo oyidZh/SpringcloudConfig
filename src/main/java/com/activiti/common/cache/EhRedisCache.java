@@ -15,6 +15,7 @@ import static com.mchange.v2.ser.SerializableUtils.toByteArray;
 import static jdk.nashorn.internal.runtime.JSType.toObject;
 
 /**
+ * 两级缓存
  * Created by 12490 on 2017/8/6.
  */
 public class EhRedisCache implements Cache {

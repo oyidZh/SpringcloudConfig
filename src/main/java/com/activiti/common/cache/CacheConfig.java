@@ -9,12 +9,17 @@ import org.springframework.context.annotation.Configuration;
 import java.lang.reflect.Method;
 
 /**
+ * ehCache配置
  * Created by 12490 on 2017/8/6.
  */
 @Configuration
 @EnableCaching
 public class CacheConfig {
 
+    /**
+     * key生成器
+     * @return
+     */
     @Bean
     public KeyGenerator keyGenerator() {
         return new KeyGenerator() {

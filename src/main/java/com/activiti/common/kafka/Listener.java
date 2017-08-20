@@ -23,6 +23,10 @@ public class Listener {
     @Autowired
     private CommonUtil commonUtil;
 
+    /**
+     * Kafka消費者发送邮件
+     * @param record  消息
+     */
     @KafkaListener(topics = {ConstantsUtils.emailTopic})
     public void listen(ConsumerRecord<?, ?> record) {
         Optional<?> kafkaMessage = Optional.ofNullable(record.value());

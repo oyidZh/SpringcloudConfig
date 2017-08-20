@@ -8,6 +8,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
 /**
+ * Kafka生产者发送邮件信息
  * Created by liulinhui on 2017/8/3.
  */
 @Component

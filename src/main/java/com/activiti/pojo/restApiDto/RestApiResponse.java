@@ -3,7 +3,7 @@ package com.activiti.pojo.restApiDto;
 import java.io.Serializable;
 
 /**
- * 异常信息返回
+ * 接口统一信息返回
  * Created by liulinhui on 2017/8/5.
  */
 public class RestApiResponse implements Serializable {

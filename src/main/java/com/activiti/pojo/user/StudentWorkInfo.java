@@ -15,7 +15,8 @@ public class StudentWorkInfo implements Serializable {
     private Date lastCommitTime;
     private Double grade;
     private String judgeType;  //teacher：老師评分  student:学生互评
-    private int judgeTimes;      //每份作业互评次数
+    private int judgeTimes;      //作业被评论次数
+    private Date joinJudgeTime;   //参与互评的时间
 
     public StudentWorkInfo() {
     }
@@ -74,6 +75,14 @@ public class StudentWorkInfo implements Serializable {
 
     public void setJudgeTimes(int judgeTimes) {
         this.judgeTimes = judgeTimes;
+    }
+
+    public Date getJoinJudgeTime() {
+        return joinJudgeTime;
+    }
+
+    public void setJoinJudgeTime(Date joinJudgeTime) {
+        this.joinJudgeTime = joinJudgeTime;
     }
 
     @Override

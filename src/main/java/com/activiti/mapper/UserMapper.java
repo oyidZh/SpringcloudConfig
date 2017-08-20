@@ -1,5 +1,6 @@
 package com.activiti.mapper;
 
+import com.activiti.pojo.user.StudentWorkInfo;
 import com.activiti.pojo.user.User;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +15,14 @@ public interface UserMapper {
     User findUserInfo(String emailAddr);
 
     int insertUser(User user);
+
+    int insertUserWork(StudentWorkInfo studentWorkInfo);
+
+    StudentWorkInfo selectStudentWorkInfo(StudentWorkInfo studentWorkInfo);
+
+   List<String> selectNoGradeUser(String courseCode);
+
+   List<String> selectUnFinishJudgeUser(String courseCode);
 
     int chaosUserInfo();
 

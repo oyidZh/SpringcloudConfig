@@ -1,5 +1,7 @@
 package com.activiti.controller;
 
+import com.activiti.common.aop.ApiAnnotation;
+import com.activiti.pojo.user.StudentWorkInfo;
 import com.activiti.pojo.user.User;
 import com.activiti.service.UserService;
 import com.alibaba.fastjson.JSONObject;
@@ -18,6 +20,7 @@ import java.util.UUID;
 /**
  * Created by 12490 on 2017/8/1.
  */
+@RequestMapping("/user")
 @RestController
 public class UserController {
     private final org.slf4j.Logger logger = LoggerFactory.getLogger(UserController.class);
@@ -31,8 +34,16 @@ public class UserController {
 
     @RequestMapping("/getUserInfo")
     @ResponseBody
+    @ApiAnnotation
     public User getUserInfo(@RequestParam(value = "email", required = true) String email) throws Exception {
         return userService.getUserInfo(email);
+    }
+
+    @RequestMapping("/commitWork")
+    @ResponseBody
+    @ApiAnnotation
+    public Object commitWork(@RequestParam(value = "StudentWorkInfo") StudentWorkInfo studentWorkInfo) {
+        return null;
     }
 }
 

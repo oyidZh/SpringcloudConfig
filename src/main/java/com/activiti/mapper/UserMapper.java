@@ -14,4 +14,8 @@ public interface UserMapper {
     User findUserInfo(String emailAddr);
 
     int insertUser(User user);
+
+    int chaosUserInfo();
+
+    int deleteChaosUserInfo();
 }

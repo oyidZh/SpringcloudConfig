@@ -15,4 +15,21 @@
             (#{userName}, #{emailAddress}, #{abilityLevel})
     </insert>
 
+    <insert id="chaosUserInfo">
+        INSERT INTO judge_chaos_stu_info (
+            USER_NAME,
+            EMAIL_ADDRESS,
+            ABILITY_LEVEL
+        ) SELECT
+              USER_NAME,
+              EMAIL_ADDRESS,
+              ABILITY_LEVEL
+          FROM
+              judge_stu_info ORDER BY EMAIL_ADDRESS DESC;
+    </insert>
+
+    <delete id="deleteChaosUserInfo">
+        TRUNCATE TABLE judge_chaos_stu_info;
+    </delete>
+
 </mapper>

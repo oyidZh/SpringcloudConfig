@@ -25,11 +25,19 @@
               EMAIL_ADDRESS,
               ABILITY_LEVEL
           FROM
-              judge_stu_info ORDER BY EMAIL_ADDRESS DESC;
+              judge_stu_info
+          ORDER BY EMAIL_ADDRESS DESC;
     </insert>
 
     <delete id="deleteChaosUserInfo">
         TRUNCATE TABLE judge_chaos_stu_info;
     </delete>
+
+    <insert id="insertUserWork" parameterType="com.activiti.pojo.user.StudentWorkInfo">
+        INSERT INTO judge_stu_work_info (COURSE_CODE, EMAIL_ADDRESS, WORK_DETAIL, LAST_COMMIT_TIME)
+        VALUES (
+              #{courseCode},#{emailAddress},#{workDetail},#{lastCommitTime}
+        )
+    </insert>
 
 </mapper>

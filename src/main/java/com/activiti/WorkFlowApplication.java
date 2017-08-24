@@ -16,6 +16,7 @@ import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.transaction.PlatformTransactionManager;
 
@@ -24,6 +25,7 @@ import javax.sql.DataSource;
 @SpringBootApplication
 @ImportResource(locations = {"classpath:spring/applicationContext.xml"})
 @MapperScan("com.activiti.mapper")
+@EnableAsync
 public class WorkFlowApplication {
     private static Logger logger = LoggerFactory.getLogger(WorkFlowApplication.class);
 

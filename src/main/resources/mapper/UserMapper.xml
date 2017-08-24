@@ -26,7 +26,7 @@
               ABILITY_LEVEL
           FROM
               judge_stu_info
-          ORDER BY EMAIL_ADDRESS DESC;
+          ORDER BY USER_NAME DESC;
     </insert>
 
     <delete id="deleteChaosUserInfo">

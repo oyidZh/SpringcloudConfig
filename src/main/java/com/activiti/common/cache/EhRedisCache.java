@@ -11,8 +11,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 
 import java.util.concurrent.Callable;
 
-import static com.mchange.v2.ser.SerializableUtils.toByteArray;
-import static jdk.nashorn.internal.runtime.JSType.toObject;
 
 /**
  * 两级缓存

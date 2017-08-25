@@ -16,6 +16,7 @@ public class ScheduleServiceImpl implements ScheduleService {
     @Autowired
     private ScheduleMapper scheduleMapper;
 
+
     @Override
     public ScheduleDto selectScheduleTime(String courseCode) {
         return scheduleMapper.selectScheduleTime(courseCode);

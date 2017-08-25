@@ -12,12 +12,12 @@
     </bean>
 
     <!-- ehCache 操作对象 -->
-    <bean id="ehCache1" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
-        <property name="cacheName" value="ehCache1"/>
+    <bean id="ehCache300" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+        <property name="cacheName" value="ehCache300"/>
         <property name="cacheManager" ref="ehcacheManager"/>
     </bean>
-    <bean id="ehCache2" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
-        <property name="cacheName" value="ehCache2"/>
+    <bean id="ehCache60" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+        <property name="cacheName" value="ehCache60"/>
         <property name="cacheManager" ref="ehcacheManager"/>
     </bean>
 
@@ -25,17 +25,21 @@
     <bean id="ehRedisCacheManager" class="org.springframework.cache.support.SimpleCacheManager">
         <property name="caches">
             <set>
-                <bean id="usereEhRedisCache" class="com.activiti.common.cache.EhRedisCache">
+                <bean id="redisCache300" class="com.activiti.common.cache.EhRedisCache">
                     <property name="redisTemplate" ref="redisTemplate"/>
-                    <property name="ehCache" ref="ehCache1"/>
-                    <property name="name" value="ehCache1"/>
-                    <property name="liveTime" value="60"/>
+                    <property name="ehCache" ref="ehCache300"/>
+                    <!--ehcache存储五个小时-->
+                    <property name="name" value="ehCache300"/>
+                    <!--redis存储六个小时-->
+                    <property name="liveTime" value="21600"/>
                 </bean>
-                <bean id="testEhRedisCache" class="com.activiti.common.cache.EhRedisCache">
+                <bean id="redisCache60" class="com.activiti.common.cache.EhRedisCache">
                     <property name="redisTemplate" ref="redisTemplate"/>
-                    <property name="ehCache" ref="ehCache2"/>
-                    <property name="name" value="ehCache2"/>
-                    <property name="liveTime" value="3600"/>
+                    <!--ehcache存储一个小时-->
+                    <property name="ehCache" ref="ehCache60"/>
+                    <property name="name" value="ehCache60"/>
+                    <!--redis存储两个小时-->
+                    <property name="liveTime" value="7200"/>
                 </bean>
             </set>
         </property>

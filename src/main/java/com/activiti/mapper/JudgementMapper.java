@@ -65,4 +65,11 @@ public interface JudgementMapper {
      */
     int countAllWorks(String courseCode);
 
+    /**
+     * 查询打乱顺序后的学生ID
+     * @param emailAddress
+     * @return
+     */
+    int selectChaosId(String emailAddress);
+
 }

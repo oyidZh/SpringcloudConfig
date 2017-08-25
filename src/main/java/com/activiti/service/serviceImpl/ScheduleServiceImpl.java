@@ -4,6 +4,8 @@ import com.activiti.mapper.ScheduleMapper;
 import com.activiti.pojo.schedule.ScheduleDto;
 import com.activiti.service.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,12 +14,14 @@ import java.util.List;
  * Created by 12490 on 2017/8/19.
  */
 @Service
+@EnableCaching
 public class ScheduleServiceImpl implements ScheduleService {
     @Autowired
     private ScheduleMapper scheduleMapper;
 
 
     @Override
+    @Cacheable(value = "ehCache60")
     public ScheduleDto selectScheduleTime(String courseCode) {
         return scheduleMapper.selectScheduleTime(courseCode);
     }

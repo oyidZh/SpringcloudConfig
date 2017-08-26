@@ -1,6 +1,7 @@
 package com.activiti.controller;
 
 import com.activiti.common.aop.ApiAnnotation;
+import com.activiti.common.utils.CommonUtil;
 import com.activiti.pojo.user.StudentWorkInfo;
 import com.activiti.pojo.user.User;
 import com.activiti.service.UserService;
@@ -26,6 +27,8 @@ public class UserController {
     private final org.slf4j.Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
+    private CommonUtil commonUtil;
+    @Autowired
     private UserService userService;
 
     /*
@@ -36,13 +39,14 @@ public class UserController {
     @ResponseBody
     @ApiAnnotation
     public User getUserInfo(@RequestParam(value = "email", required = true) String email) throws Exception {
-        return userService.getUserInfo(email);
+        return userService.findUserInfo(email);
     }
 
     @RequestMapping("/commitWork")
     @ResponseBody
     @ApiAnnotation
     public Object commitWork(@RequestParam(value = "StudentWorkInfo") StudentWorkInfo studentWorkInfo) {
+        User user=new User(commonUtil.getRandomUserName(),studentWorkInfo.getEmailAddress());
         return null;
     }
 }

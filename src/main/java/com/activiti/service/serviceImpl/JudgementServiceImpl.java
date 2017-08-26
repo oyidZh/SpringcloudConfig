@@ -5,6 +5,7 @@ import com.activiti.pojo.user.JudgementLs;
 import com.activiti.pojo.user.StudentWorkInfo;
 import com.activiti.service.JudgementService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.stereotype.Service;
 
@@ -46,6 +47,7 @@ public class JudgementServiceImpl implements JudgementService {
         return judgementMapper.selectJudgementLs(judgementLs);
     }
 
+    @Cacheable(value = "ehCache300", keyGenerator = "keyGenerator")
     @Override
     public int countAllWorks(String courseCode) {
         return judgementMapper.countAllWorks(courseCode);

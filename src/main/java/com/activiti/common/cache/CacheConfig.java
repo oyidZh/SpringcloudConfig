@@ -28,6 +28,7 @@ public class CacheConfig {
                 sb.append(o.getClass().getName());
                 sb.append(method.getName());
                 for (Object obj : objects) {
+                    sb.append("_");
                     sb.append(obj.toString());
                 }
                 return sb.toString();

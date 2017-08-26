@@ -21,7 +21,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 
 
     @Override
-    @Cacheable(value = "ehCache60")
+    @Cacheable(value = "ehCache60", keyGenerator = "keyGenerator")
     public ScheduleDto selectScheduleTime(String courseCode) {
         return scheduleMapper.selectScheduleTime(courseCode);
     }

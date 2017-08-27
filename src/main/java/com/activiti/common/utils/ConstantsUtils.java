@@ -10,8 +10,6 @@ public class ConstantsUtils {
     //https://api.github.com/repos/chyyuu/os_course_exercise_library/contents/data/json/16/1502.json
     public static final String getQAFromGitHub="https://api.github.com/repos/chyyuu/os_course_exercise_library/contents/data/json/";
 
-    public static final String stage1="stage1";  //
-
     public static  final String emailTopic="EMAIL";
 
 }

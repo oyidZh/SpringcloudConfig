@@ -63,7 +63,7 @@ public class RedisTest {
     @Test
     public void ORMCacheTest(){
         for (int i=0;i<1000;i++){
-            System.out.println(JSONObject.toJSONString(userService.getUserInfo("1249055292@qq.com")));
+            System.out.println(JSONObject.toJSONString(userService.findUserInfo("1249055292@qq.com")));
         }
     }
 }

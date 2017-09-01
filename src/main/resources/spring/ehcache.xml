@@ -35,21 +35,30 @@
                   diskExpiryThreadIntervalSeconds="120"
                   memoryStoreEvictionPolicy="LRU"/>
 
-    <cache name="ehCache1"
-           maxElementsInMemory="10000"
-           eternal="false"
-           overflowToDisk="true"
-           timeToIdleSeconds="20"
-           timeToLiveSeconds="20"
-           memoryStoreEvictionPolicy="LFU">
-    </cache>
-
-    <cache name="ehCache2"
+    <cache name="test"
            maxElementsInMemory="10000"
            eternal="false"
            overflowToDisk="true"
            timeToIdleSeconds="10"
            timeToLiveSeconds="10"
+           memoryStoreEvictionPolicy="LFU">
+    </cache>
+
+    <cache name="ehCache300"
+           maxElementsInMemory="10000"
+           eternal="false"
+           overflowToDisk="true"
+           timeToIdleSeconds="18000"
+           timeToLiveSeconds="18000"
+           memoryStoreEvictionPolicy="LFU">
+    </cache>
+
+    <cache name="ehCache60"
+           maxElementsInMemory="10000"
+           eternal="false"
+           overflowToDisk="true"
+           timeToIdleSeconds="3600"
+           timeToLiveSeconds="3600"
            memoryStoreEvictionPolicy="LFU">
     </cache>
 

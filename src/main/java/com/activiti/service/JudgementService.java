@@ -1,15 +1,11 @@
-package com.activiti.mapper;
+package com.activiti.service;
 
 import com.activiti.pojo.user.JudgementLs;
 import com.activiti.pojo.user.StudentWorkInfo;
-import com.activiti.pojo.user.User;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
-public interface JudgementMapper {
-
+public interface JudgementService {
     /**
      * 提交作业
      *
@@ -60,6 +56,7 @@ public interface JudgementMapper {
 
     /**
      * 查询提交作业的总人数
+     *
      * @param courseCode
      * @return
      */
@@ -67,9 +64,9 @@ public interface JudgementMapper {
 
     /**
      * 查询打乱顺序后的学生ID
+     *
      * @param emailAddress
      * @return
      */
     int selectChaosId(String emailAddress);
-
 }

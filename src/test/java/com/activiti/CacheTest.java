@@ -26,7 +26,7 @@ public class CacheTest {
     public void putGetTest() throws InterruptedException {
         Long start = System.currentTimeMillis();
         while ((System.currentTimeMillis() - start) < 60000) {
-            userService.getUserInfo("1249055292@qq.com");
+            userService.findUserInfo("1249055292@qq.com");
             System.out.println((System.currentTimeMillis() - start) / 1000);
             Thread.sleep(1000);
         }

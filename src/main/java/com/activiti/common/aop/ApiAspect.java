@@ -1,6 +1,7 @@
 package com.activiti.common.aop;
 
 import com.activiti.pojo.restApiDto.RestApiResponse;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -19,17 +20,18 @@ import java.lang.reflect.Method;
 @Component
 public class ApiAspect {
     private static final Logger logger = LoggerFactory.getLogger(ApiAspect.class);
+
     @Pointcut("@annotation(com.activiti.common.aop.ApiAnnotation)")
     public void allMethod() {
     }
 
     //用来计算消耗时间
-    ThreadLocal<Long> time = new ThreadLocal<Long>();
+    private ThreadLocal<Long> time = new ThreadLocal<Long>();
 
     /**
      * 在所有标注@ParamCheck的地方切入
      *
-     * @param joinPoint
+     * @param joinPoint 切点
      */
     @Before("allMethod()")
     public void beforeExec(JoinPoint joinPoint) {
@@ -41,9 +43,9 @@ public class ApiAspect {
         Object result;
         try {
             result = joinPoint.proceed();
-            RestApiResponse restApiResponse = new RestApiResponse(true, result);
-            return restApiResponse;
+            return new RestApiResponse(true, result);
         } catch (Exception e) {
+            ExceptionUtils.getStackTrace(e);
             throw e;
         }
     }
@@ -51,7 +53,7 @@ public class ApiAspect {
     /**
      * 在所有标注@ParamCheck的地方切入  后置通知
      *
-     * @param joinPoint
+     * @param joinPoint 切点
      */
     @After("allMethod()")
     public void afterExec(JoinPoint joinPoint) {

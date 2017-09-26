@@ -47,7 +47,7 @@ public class UserController {
     @RequestMapping("/getUserInfo")
     @ResponseBody
     @ApiAnnotation
-    public User getUserInfo(@RequestParam(value = "email", required = true) String email) throws Exception {
+    public Object getUserInfo(@RequestParam(value = "email", required = true) String email) throws Exception {
         return userService.findUserInfo(email);
     }
 

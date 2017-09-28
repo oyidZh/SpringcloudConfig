@@ -1,6 +1,7 @@
 package com.activiti.common.Exception;
 
 import com.activiti.pojo.restApiDto.RestApiResponse;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -28,7 +29,8 @@ public class RestExceptionHandler {
     @ExceptionHandler(value = {IllegalArgumentException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public RestApiResponse IllegalArgumentException(IllegalArgumentException ex) {
-        return new RestApiResponse(501, ex.getMessage(),false);
+        logger.error(ExceptionUtils.getStackTrace(ex));
+        return new RestApiResponse(500, ex.getMessage(),false);
     }
 
     @ExceptionHandler(value = {NoHandlerFoundException.class})

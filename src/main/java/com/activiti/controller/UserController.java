@@ -59,7 +59,7 @@ public class UserController {
      */
     @RequestMapping("/commitWork")
     @ResponseBody
-    @ApiAnnotation
+    @ApiAnnotation(validate = {"courseCode","emailAddress","workDetail"})
     public Object commitWork(StudentWorkInfo studentWorkInfo) {
         User user = new User(commonUtil.getRandomUserName(), studentWorkInfo.getEmailAddress());
         userService.insertUser(user);

@@ -62,7 +62,7 @@ public class CommonController {
     @RequestMapping("/insertScheduleTime")
     @ResponseBody
     @ApiAnnotation
-    public Object insertScheduleTime(@RequestParam(value = "schedule", required = true) ScheduleDto scheduleDto) throws Exception {
+    public Object insertScheduleTime(ScheduleDto scheduleDto) throws Exception {
         String courseCode = scheduleDto.getCourseCode();
         if (null == courseCode) throw new Exception("courseCode字段不能为空");
         scheduleService.insertScheduleTime(scheduleDto);
@@ -78,7 +78,7 @@ public class CommonController {
     @RequestMapping("/updateScheduleTime")
     @ResponseBody
     @ApiAnnotation
-    public Object updateScheduleTime(@RequestParam(value = "schedule", required = true) ScheduleDto scheduleDto) throws Exception {
+    public Object updateScheduleTime(ScheduleDto scheduleDto) throws Exception {
         String courseCode = scheduleDto.getCourseCode();
         if (null == courseCode) throw new Exception("courseCode字段不能为空");
         scheduleService.updateScheduleTime(scheduleDto);

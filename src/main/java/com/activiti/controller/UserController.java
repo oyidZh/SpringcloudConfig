@@ -60,7 +60,7 @@ public class UserController {
     @RequestMapping("/commitWork")
     @ResponseBody
     @ApiAnnotation
-    public Object commitWork(@RequestParam(value = "StudentWorkInfo") StudentWorkInfo studentWorkInfo) {
+    public Object commitWork(StudentWorkInfo studentWorkInfo) {
         User user = new User(commonUtil.getRandomUserName(), studentWorkInfo.getEmailAddress());
         userService.insertUser(user);
         studentWorkInfo.setLastCommitTime(new Date());
@@ -96,8 +96,8 @@ public class UserController {
         int studentId = judgementService.selectChaosId(email);
         int countWork = judgementService.countAllWorks(courseCode);
         int judgeTimes = scheduleService.selectScheduleTime(courseCode).getJudgeTimes();
-        int[] initIdList={studentId+1,studentId+2,studentId+3};
-        List<StudentWorkInfo>workInfoList=new ArrayList<>();
+        int[] initIdList = {studentId + 1, studentId + 2, studentId + 3};
+        List<StudentWorkInfo> workInfoList = new ArrayList<>();
 //        for (int id:initIdList){
 //            if (id>countWork)id=id-countWork;
 //            studentWorkInfo.setEmailAddress(userService);
